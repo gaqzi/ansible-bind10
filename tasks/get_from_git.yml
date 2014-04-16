@@ -1,0 +1,15 @@
+---
+- name: Clone bind from ISC
+  git: >
+    repo={{ bind10_git_repository }}
+    dest=/root/bind10-{{ bind10_version }}
+    version={{ bind10_git_release }}
+    accept_hostkey=yes
+    update=yes
+  register: bind_version
+
+- name: Run autoreconf
+  shell: >
+    chdir=/root/bind10-{{ bind10_version }}
+    autoreconf -i
+  when: bind_version.change

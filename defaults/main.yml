@@ -1,0 +1,22 @@
+---
+# Toggles
+bind10_build_dhcp: no
+bind10_install_manpages: no
+bind10_force_reinstall: no
+bind10_from_git: no
+bind10_from_file: yes
+
+# Configurables
+bind10_prefix_path: /usr/local
+bind10_version: 1.1.0
+bind10_file_md5: d5e4c286e75ab9de8b729521a974649d
+
+# Specifics for releases
+bind10_git_repository: git://git.bind10.isc.org/bind10
+bind10_git_release: bind10-{{ bind10_version }}-release
+
+bind10_file: http://www.isc.org/downloads/file/bind10-{{ bind10_version }}/?version=tar.gz
+
+bind10_configure_arguments: >
+  --prefix={{ bind10_prefix_path }}
+  {% if bind10_install_manpages %}--enable-generate-docs{% endif %}

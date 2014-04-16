@@ -1,0 +1,23 @@
+---
+bind10_system_dependencies:
+  - build-essential
+  - git
+  - libtool
+  - automake
+  - lcov
+  - pkg-config
+  - python3-dev
+  - libsqlite3-dev
+  - libbotan1.8-dev
+  - liblog4cplus-dev
+  - libgtest-dev
+  - libboost1.48-dev
+
+bind10_system_dependencies_dhcp:
+  - libmysql++-dev
+
+bind10_man_dependencies:
+  - xsltproc
+  - docbook
+  - docbook-xsl
+  - elinks

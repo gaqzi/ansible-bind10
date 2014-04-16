@@ -1,0 +1,3 @@
+---
+# Used when downloading from file
+wget_package_name: wget

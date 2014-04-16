@@ -1,0 +1,33 @@
+---
+- name: Add the OS specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Install dependencies for Debian
+  include: install_deps_debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Get from git
+  include: get_from_git.yml
+  when: bind10_from_git
+
+- name: Get from file
+  include: get_from_file.yml
+  when: bind10_from_file
+
+- name: See if bindctl is installed
+  stat: path="{{ bind10_prefix_path }}/bin/bindctl"
+  register: bind10_bin
+
+- name: Configure, build, and install
+  shell: >
+    chdir=/root/bind10-{{ bind10_version }}
+    ./configure {{ bind10_configure_arguments }} &&
+    make &&
+    make install
+  when: bind_version.changed or not bind10_bin.stat.exists
+        or bind10_force_reinstall
+  register: bind_installation
+
+- name: Update ldconfig
+  command: ldconfig
+  when: bind_installation.changed

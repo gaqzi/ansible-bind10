@@ -1,0 +1,14 @@
+---
+- name: Install system dependencies
+  apt: pkg="{{ item }}" state=present
+  with_items: bind10_system_dependencies
+
+- name: Install DHCP dependencies
+  apt: pkg="{{ item }}" state=present
+  with_items: bind10_system_dependencies_dhcp
+  when: bind10_build_dhcp
+
+- name: Install manpages dependencies
+  apt: pkg="{{ item }}" state=present
+  with_items: bind10_man_dependencies
+  when: bind10_install_manpages

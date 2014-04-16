@@ -1,0 +1,32 @@
+---
+- name: Install wget Debian
+  apt: pkg="{{ wget_package_name }}" state=present
+  when: ansible_os_family == 'Debian'
+
+- name: Install wget RedHat
+  yum: name="{{ wget_package_name }}" state=present
+  when: ansible_os_family == 'RedHat'
+
+- name: See if file download exists
+  stat: path=/root/bind10-{{ bind10_version }}.tgz get_md5=yes
+  register: bind10_download
+
+- name: Download from ISC
+  command: >
+    chdir=/root/
+    wget -c "{{ bind10_file }}" -O bind10-{{ bind10_version }}.tgz
+  when: not bind10_download.stat.exists or
+          (bind10_download.stat.exists and bind10_download.stat.md5 != "{{ bind10_file_md5 }}")
+  register: bind10_download
+
+- name: See if bind is unpacked
+  stat: path=/root/bind10-{{ bind10_version }}
+  when: bind10_download.changed
+  register: bind10_directory
+
+- name: Unpack
+  command: >
+    chdir=/root/
+    tar xfz bind10-{{ bind10_version }}.tgz
+  when: not bind10_directory.stat.isdir is defined or bind10_download.change
+  register: bind_version

@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  author: Björn Andersson
+  description: Role to install bind10 from source
+  company: your company (optional)
+  license: license (BSD)
+  min_ansible_version: 1.5
+  platforms:
+    - name: Ubuntu
+      versions:
+        - precise
+        - trusty
+    - name: Debian
+      versions:
+        - all
+        - etch
+        - lenny
+        - squeeze
+        - wheezy
+  categories:
+    - system
+dependencies: []
