@@ -4,6 +4,13 @@ bind10
 This role is for installing bind10 from source. More features will be
 added as I use bind10 more.
 
+The installation is based of the instructions from ISC.
+
+Ubuntu: https://bind10.isc.org/wiki/SystemNotesUbuntu1204
+
+I don't use RedHat but there are instructions available from ICS for
+both [RHEL and CentOS.](https://bind10.isc.org/wiki/InstallStartPage#RedHatEnterpriseLinuxRHELandderivatives)
+
 Requirements
 ------------
 

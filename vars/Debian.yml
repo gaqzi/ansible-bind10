@@ -15,6 +15,8 @@ bind10_system_dependencies:
 bind10_system_dependencies_dhcp:
   - libmysql++-dev
 
+# I don't know if these are all really used for just man pages, but
+# cargo culting on this one.
 bind10_man_dependencies:
   - xsltproc
   - docbook
