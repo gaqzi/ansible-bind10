@@ -1,4 +1,12 @@
 ---
+- name: Install git Debian
+  apt: pkg="{{ git_package_name }}" state=present
+  when: ansible_os_family == 'Debian'
+
+- name: Install git RedHat
+  yum: name="{{ git_package_name }}" state=present
+  when: ansible_os_family == 'RedHat'
+
 - name: Clone bind from ISC
   git: >
     repo={{ bind10_git_repository }}
@@ -12,4 +20,4 @@
   shell: >
     chdir=/root/bind10-{{ bind10_version }}
     autoreconf -i
-  when: bind_version.change
+  when: bind_version.changed

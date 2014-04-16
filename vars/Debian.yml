@@ -1,7 +1,6 @@
 ---
 bind10_system_dependencies:
   - build-essential
-  - git
   - libtool
   - automake
   - lcov
@@ -21,3 +20,5 @@ bind10_man_dependencies:
   - docbook
   - docbook-xsl
   - elinks
+
+git_package_name: git

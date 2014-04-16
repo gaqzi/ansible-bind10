@@ -20,6 +20,11 @@ Toggles:
 * `bind10_from_git`: **no** - whether to download bind from git
 * `bind10_from_file`: **yes** - whether to download bind as a file
 
+**Note**: Being in Asia and installing from git isn't a very good
+  idea, the ICS repository has really bad connectivity and this might
+  be the case for other parts of the world as well. I started out by
+  doing it from git but gave up because of how slow it was.
+
 Configurables:
 
 * `bind10_prefix_path`: **/usr/local** - where bind will be installed
